@@ -4,6 +4,6 @@ public class TransactionScript {
 
     public static void main(String[] args) {
         RecognitionService recognitionService = new RecognitionService(new Gateway());
-        recognitionService.calculateRevenueRecognitions(2);
+        recognitionService.calculateRevenueRecognitions(3);
     }
 }

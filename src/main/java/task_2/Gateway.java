@@ -42,7 +42,7 @@ public class Gateway {
         return stmt.executeQuery();
     }
 
-    public void insertRecognition(int contract, Long amount, LocalDate recognizedOn, int days) throws SQLException {
+    public void insertRecognition(int contract, long amount, LocalDate recognizedOn, int days) throws SQLException {
         logger.info(String.format(
                 "insert recognition with params: contractId = %s, amount = %s, recognizedOn = %s, days = %s",
                 contract, amount, recognizedOn, days));

@@ -23,7 +23,7 @@ public class RecognitionService {
             ResultSet rsContract = gateway.findContract(contractId);
             rsContract.next();
 
-            Long revenue = rsContract.getLong("revenue");
+            long totalRevenue = rsContract.getLong("revenue");
             LocalDate date = rsContract.getObject("date_signed", LocalDate.class);
             int productId = rsContract.getInt("product");
 
@@ -32,26 +32,32 @@ public class RecognitionService {
             rsProduct.next();
             String productType = rsProduct.getString("type").toUpperCase();
 
-            Long oneThirdPart = Math.floorDiv(revenue, 3);
+            long[] allocations = allocate(totalRevenue);
 
             switch (productType) {
                 case "W":
-                    gateway.insertRecognition(contractId, revenue, date, 0);
+                    gateway.insertRecognition(contractId, totalRevenue, date, 0);
                     break;
                 case "S":
-                    gateway.insertRecognition(contractId, oneThirdPart, date, 0);
-                    gateway.insertRecognition(contractId, oneThirdPart, date.plusDays(60), 60);
-                    gateway.insertRecognition(contractId, oneThirdPart, date.plusDays(90), 90);
+                    gateway.insertRecognition(contractId, allocations[0], date, 0);
+                    gateway.insertRecognition(contractId, allocations[1], date.plusDays(60), 60);
+                    gateway.insertRecognition(contractId, allocations[2], date.plusDays(90), 90);
                     break;
                 case "D":
-                    gateway.insertRecognition(contractId, oneThirdPart, date, 0);
-                    gateway.insertRecognition(contractId, oneThirdPart, date.plusDays(30), 30);
-                    gateway.insertRecognition(contractId, oneThirdPart, date.plusDays(60), 60);
+                    gateway.insertRecognition(contractId, allocations[0], date, 0);
+                    gateway.insertRecognition(contractId, allocations[1], date.plusDays(30), 30);
+                    gateway.insertRecognition(contractId, allocations[2], date.plusDays(60), 60);
                     break;
             }
         } catch (SQLException e) {
             logger.severe(e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
+    }
+
+    private long[] allocate(long revenue) {
+        long oneThirdPart = Math.floorDiv(revenue, 3);
+        long rest = revenue - oneThirdPart * 2;
+        return new long[]{oneThirdPart, oneThirdPart, rest};
     }
 }
