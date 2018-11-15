@@ -4,10 +4,13 @@ import dbutils.ConnectionFactory;
 import dbutils.PopulateDB;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 public class BeautySalon {
     public static void main(String[] args) throws IOException, SQLException {
-        PopulateDB.recreateAndPopulateDB("init_task3.sql", ConnectionFactory.getConnection("db_task3.properties"));
+        final Connection connection = ConnectionFactory.getConnection();
+        PopulateDB.recreateAndPopulateDB("init_task3.sql", connection);
+        connection.setSchema("task3");
     }
 }

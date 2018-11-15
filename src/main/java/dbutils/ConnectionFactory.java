@@ -14,9 +14,11 @@ public class ConnectionFactory {
 
     private static final Logger logger = Logger.getLogger(clazz.getSimpleName());
 
+    private static final String fileName = "db.properties";
+
     private ConnectionFactory(){}
 
-    public static Connection getConnection(String fileName) throws IOException, SQLException {
+    public static Connection getConnection() throws IOException, SQLException {
 
         Connection connection = null;
 
