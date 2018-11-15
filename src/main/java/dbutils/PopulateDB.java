@@ -15,6 +15,8 @@ public class PopulateDB {
     private static final Logger logger = Logger.getLogger(clazz.getSimpleName());
 
     public static void recreateAndPopulateDB(String fileName, Connection connection) {
+        logger.info("Populate DB. SQL file: " + fileName);
+
         try (InputStream inputStream = clazz.getClassLoader().getResourceAsStream("dbinit/" + fileName);
              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
              Statement statement = connection.createStatement()) {
