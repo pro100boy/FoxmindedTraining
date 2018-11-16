@@ -18,9 +18,13 @@ public class ConnectionFactory {
 
     private ConnectionFactory(){}
 
-    public static Connection getConnection() throws IOException, SQLException {
+    private static Connection connection = createConnection();
 
-        Connection connection = null;
+    public static Connection getConnection(){
+        return connection;
+    }
+
+    private static Connection createConnection() {
 
         try (InputStream input = clazz.getClassLoader().getResourceAsStream(fileName)) {
 
@@ -37,6 +41,9 @@ public class ConnectionFactory {
             String passwd = prop.getProperty("db.password");
 
             connection = DriverManager.getConnection(url, user, passwd);
+        } catch (IOException | SQLException e) {
+            logger.severe("ERROR! Unable to get connection");
+            throw new RuntimeException();
         }
 
         return connection;
