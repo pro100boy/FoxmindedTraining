@@ -5,4 +5,6 @@ public interface Cache {
     void put(String key, Object obj);
     Object remove(String key);
     void clear();
+    boolean isEmpty();
+    boolean contains(String key);
 }

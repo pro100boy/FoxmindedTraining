@@ -40,6 +40,16 @@ public class StatisticCache implements Cache {
         cache.clear();
     }
 
+    @Override
+    public boolean isEmpty() {
+        return cache.isEmpty();
+    }
+
+    @Override
+    public boolean contains(String key) {
+        return cache.contains(key);
+    }
+
     public void printStatistic()
     {
         System.out.println(statistic);

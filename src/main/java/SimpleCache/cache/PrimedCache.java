@@ -35,4 +35,14 @@ public class PrimedCache implements Cache {
         log.info("clear cache");
         cache.clear();
     }
+
+    @Override
+    public boolean isEmpty() {
+        return cache.isEmpty();
+    }
+
+    @Override
+    public boolean contains(String key) {
+        return cache.contains(key);
+    }
 }
