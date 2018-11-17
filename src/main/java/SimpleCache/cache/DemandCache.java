@@ -3,7 +3,8 @@ package SimpleCache.cache;
 import SimpleCache.server.Server;
 import lombok.extern.java.Log;
 
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -11,7 +12,7 @@ import static java.util.Objects.nonNull;
 @Log
 public class DemandCache implements Cache {
 
-    private static final Hashtable<String, Object> cache = new Hashtable<>();
+    private static final Map<String, Object> cache = new HashMap<>();
 
     private Server server;
 
