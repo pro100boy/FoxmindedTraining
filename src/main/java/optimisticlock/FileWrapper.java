@@ -1,4 +1,4 @@
-package OptimisticLock;
+package optimisticlock;
 
 public class FileWrapper {
     private String name;

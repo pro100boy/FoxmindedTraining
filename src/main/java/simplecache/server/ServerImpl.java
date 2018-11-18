@@ -1,7 +1,7 @@
-package SimpleCache.server;
+package simplecache.server;
 
-import SimpleCache.model.Obj1;
-import SimpleCache.model.Obj2;
+import simplecache.model.Obj1;
+import simplecache.model.Obj2;
 
 public class ServerImpl implements Server {
     @Override

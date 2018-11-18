@@ -1,8 +1,8 @@
-package SimpleCache;
+package simplecache;
 
-import SimpleCache.cache.*;
-import SimpleCache.model.Obj1;
-import SimpleCache.server.ServerImpl;
+import simplecache.cache.*;
+import simplecache.model.Obj1;
+import simplecache.server.ServerImpl;
 
 public class Client {
     public static void main(String[] args) {

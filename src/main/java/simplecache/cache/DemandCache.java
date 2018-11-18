@@ -1,6 +1,6 @@
-package SimpleCache.cache;
+package simplecache.cache;
 
-import SimpleCache.server.Server;
+import simplecache.server.Server;
 import lombok.extern.java.Log;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package SimpleCache.cache;
+package simplecache.cache;
 
 public interface Cache {
     Object get(String key);

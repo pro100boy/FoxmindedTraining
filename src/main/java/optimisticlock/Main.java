@@ -1,4 +1,4 @@
-package OptimisticLock;
+package optimisticlock;
 
 import java.io.IOException;
 

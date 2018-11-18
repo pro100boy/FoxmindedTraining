@@ -1,24 +1,20 @@
-package SimpleCache.cache;
+package simplecache.cache;
 
 import lombok.extern.java.Log;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Log
-public class StatisticCache implements Cache {
+public class PrimedCache implements Cache {
     private Cache cache;
 
-    private static final Map<String, Integer> statistic = new HashMap<>();
-
-    public StatisticCache(Cache cache) {
+    public PrimedCache(Cache cache) {
         this.cache = cache;
+        cache.get("k1");
+        cache.get("k2");
     }
 
     @Override
     public Object get(String key) {
         log.info("get by key " + key);
-        statistic.put(key, statistic.getOrDefault(key, 1) + 1);
         return cache.get(key);
     }
 
@@ -48,10 +44,5 @@ public class StatisticCache implements Cache {
     @Override
     public boolean contains(String key) {
         return cache.contains(key);
-    }
-
-    public void printStatistic()
-    {
-        System.out.println(statistic);
     }
 }

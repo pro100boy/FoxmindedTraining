@@ -1,4 +1,4 @@
-package SimpleCache.cache;
+package simplecache.cache;
 
 import lombok.extern.java.Log;
 

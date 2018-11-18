@@ -1,4 +1,4 @@
-package SimpleCache.server;
+package simplecache.server;
 
 public interface Server {
     Object getObject(String key);

@@ -1,4 +1,4 @@
-package OptimisticLock;
+package optimisticlock;
 
 import javax.persistence.OptimisticLockException;
 import java.io.File;

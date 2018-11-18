@@ -1,13 +1,9 @@
-package SimpleCache.model;
+package simplecache.model;
 
 import java.util.Objects;
 
-public class Obj2 {
+public class Obj1{
     private String descr;
-
-    public Obj2(String descr) {
-        this.descr = descr;
-    }
 
     public String getDescr() {
         return descr;
@@ -17,11 +13,15 @@ public class Obj2 {
         this.descr = descr;
     }
 
+    public Obj1(String descr) {
+        this.descr = descr;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Obj2)) return false;
-        Obj2 obj1 = (Obj2) o;
+        if (!(o instanceof Obj1)) return false;
+        Obj1 obj1 = (Obj1) o;
         return Objects.equals(descr, obj1.descr);
     }
 
@@ -32,6 +32,6 @@ public class Obj2 {
 
     @Override
     public String toString() {
-        return "Obj2. Descr: " + descr;
+        return "Obj1. Descr: " + descr;
     }
 }
