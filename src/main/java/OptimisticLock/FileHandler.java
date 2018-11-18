@@ -36,16 +36,13 @@ public class FileHandler {
     public void saveFile(FileWrapper wrapper) throws IOException {
         Path path = makeFilePath(wrapper);
         File file = path.toFile();
-        if (file.isFile())
-        {
+        if (file.isFile()) {
             Files.write(path, Arrays.asList(wrapper.getContent().split(System.lineSeparator())));
             ++version;
             Path target = makeFilePath();
             Files.move(path, target, StandardCopyOption.ATOMIC_MOVE);
             System.out.println("File " + wrapper.getName() + " was wrote");
-        }
-        else
-        {
+        } else {
             throw new OptimisticLockException("File " + wrapper.getName() + " already has changed");
         }
     }
